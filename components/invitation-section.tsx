@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function InvitationSection() {
   return (
@@ -25,6 +26,16 @@ export function InvitationSection() {
           >
             <a href="mailto:david@pcs.gg">Contact for Partnership Inquiries</a>
           </Button>
+        </div>
+
+        <div className="pt-16 opacity-30">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FUTURE%20SPORTS%20LAB%20LOGO1-16J4EHir1FkwjzimI6YaXTr1opnM6X.png"
+            alt="Future Sports Lab"
+            width={400}
+            height={100}
+            className="w-full max-w-md h-auto mx-auto"
+          />
         </div>
       </div>
     </section>

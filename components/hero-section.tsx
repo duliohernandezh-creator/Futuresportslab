@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { ChevronDown } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -50,7 +51,7 @@ export function HeroSection() {
         <div className="text-center space-y-8 max-w-5xl">
           <div className="space-y-6 animate-fade-in-up">
             <div className="relative inline-block">
-              {/* Video behind text */}
+              {/* Video behind logo */}
               <div className="absolute inset-0 -inset-x-8 -inset-y-4 overflow-hidden">
                 <video
                   ref={titleVideoRef}
@@ -68,12 +69,16 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
                 <div className="absolute inset-0 bg-black/30" />
               </div>
-              <h1
-                className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-balance px-8 py-4 drop-shadow-2xl"
-                style={{ fontFamily: "var(--font-montserrat)" }}
-              >
-                Future Sports Lab
-              </h1>
+              <div className="relative px-8 py-4">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FUTURE%20SPORTS%20LAB%20LOGO1-16J4EHir1FkwjzimI6YaXTr1opnM6X.png"
+                  alt="Future Sports Lab"
+                  width={800}
+                  height={200}
+                  className="w-full max-w-4xl h-auto drop-shadow-2xl"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
