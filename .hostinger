@@ -1,0 +1,16 @@
+# Hostinger Node.js Configuration
+
+# Enable Node.js
+nodejs_version=18
+
+# Build command
+build_command=npm run build
+
+# Output directory
+output_directory=out
+
+# Install command
+install_command=npm install
+
+# Start command (for static sites, this can be empty)
+start_command=
