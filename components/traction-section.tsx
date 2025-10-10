@@ -1,21 +1,26 @@
-import Image from "next/image"
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 
 export function TractionSection() {
-  const partners = [
+  const pillars = [
     {
-      name: "Claro Sports",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0186-0yvhimSbID5y7rRgv2ssoAUunycgdR.png",
-      subtitle: "Foundational LATAM Partner",
+      title: "Platform",
+      metric: "100+",
+      subMetric: "U.S. Cities & 20+ Sports Leagues",
+      subLabel: "An active pipeline of host cities and league partners ready to launch.",
     },
     {
-      name: "Destination Toronto",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0187-2Yw82RiZlohv0ZtomtngfqZZm7RRD2.png",
-      subtitle: "Foundational Canadian Partner",
+      title: "Audience",
+      metric: "100M+",
+      subMetric: "",
+      subLabel: "Projected organic reach via our network of media partners and content creators.",
     },
     {
-      name: "Mind Sports Olympiad",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0188-FPlOfJeqwWKZHOGZVsHlXCqhZqgkDb.png",
-      subtitle: "Foundational European Partner",
+      title: "Operation",
+      metric: "5",
+      subMetric: "Countries",
+      subLabel: "With established corporate infrastructure and a network of national-level partners.",
     },
   ]
 
@@ -30,29 +35,88 @@ export function TractionSection() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-16 mt-20">
-          {partners.map((partner) => (
-            <div key={partner.name} className="flex flex-col items-center text-center space-y-6">
-              <div className="relative w-full h-40 flex items-center justify-center p-4">
-                <Image
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={partner.name}
-                  width={280}
-                  height={120}
-                  className="object-contain max-h-full"
-                />
+          {pillars.map((pillar, index) => (
+            <div key={pillar.title} className="flex flex-col items-center text-center space-y-4">
+              <h3
+                className="text-2xl font-bold uppercase tracking-wider text-black/80"
+                style={{ fontFamily: "var(--font-montserrat)" }}
+              >
+                {pillar.title}
+              </h3>
+              <div className="my-6">
+                <AnimatedMetric metric={pillar.metric} delay={index * 200} />
+                {pillar.subMetric && (
+                  <p className="text-lg font-semibold text-black/70 mt-2" style={{ fontFamily: "var(--font-inter)" }}>
+                    {pillar.subMetric}
+                  </p>
+                )}
               </div>
-              <p className="text-sm font-semibold text-black/60 uppercase tracking-wider mt-4">{partner.subtitle}</p>
+              <p className="text-base text-black/60 max-w-xs" style={{ fontFamily: "var(--font-inter)" }}>
+                {pillar.subLabel}
+              </p>
             </div>
           ))}
         </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-xl md:text-2xl font-light text-black/70" style={{ fontFamily: "var(--font-inter)" }}>
-            Active demand from <span className="font-bold text-black">100+ U.S. Cities</span> &{" "}
-            <span className="font-bold text-black">20+ Sports Leagues</span>
-          </p>
-        </div>
       </div>
     </section>
+  )
+}
+
+function AnimatedMetric({ metric, delay = 0 }: { metric: string; delay?: number }) {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Extract number from metric (e.g., "100+" -> 100, "100M+" -> 100)
+  const targetNumber = Number.parseInt(metric.match(/\d+/)?.[0] || "0")
+  const suffix = metric.replace(/\d+/, "")
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 },
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    const timer = setTimeout(() => {
+      const duration = 2000
+      const steps = 60
+      const increment = targetNumber / steps
+      let current = 0
+
+      const counter = setInterval(() => {
+        current += increment
+        if (current >= targetNumber) {
+          setCount(targetNumber)
+          clearInterval(counter)
+        } else {
+          setCount(Math.floor(current))
+        }
+      }, duration / steps)
+
+      return () => clearInterval(counter)
+    }, delay)
+
+    return () => clearTimeout(timer)
+  }, [isVisible, targetNumber, delay])
+
+  return (
+    <div ref={ref} className="text-6xl md:text-7xl font-bold" style={{ fontFamily: "var(--font-montserrat)" }}>
+      {count}
+      {suffix}
+    </div>
   )
 }
