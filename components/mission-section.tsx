@@ -21,7 +21,7 @@ export function MissionSection() {
           {/* Right: Image */}
           <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-lg">
             <Image
-              src="/athlete-and-gamer-side-by-side-dramatic-lighting-b.jpg"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0785-RlDITdinCTuPQBb0WwCnZ6DzREqwez.jpeg"
               alt="Athlete and gamer focused"
               fill
               className="object-cover"

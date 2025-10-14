@@ -39,7 +39,7 @@ export function HeroSection() {
       <div className="absolute inset-0">
         <video ref={videoRef} autoPlay muted loop playsInline className="w-full h-full object-cover opacity-60">
           <source
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F4BB29A9-354A-4142-BD50-435A0ACF9B81-qPMP6vNYZdNkrojJJBZSPGfB1RPBsE.mp4"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3edf3171-a1c4-4b59-ab10-4f4812791ddc-Ed4mCd4Nx9ZIcsQUe3HLzO9HqGYCKE.mov"
             type="video/mp4"
           />
         </video>
@@ -62,7 +62,7 @@ export function HeroSection() {
                   className="w-full h-full object-cover opacity-50 scale-125 blur-[2px]"
                 >
                   <source
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F4BB29A9-354A-4142-BD50-435A0ACF9B81-qPMP6vNYZdNkrojJJBZSPGfB1RPBsE.mp4"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3edf3171-a1c4-4b59-ab10-4f4812791ddc-Ed4mCd4Nx9ZIcsQUe3HLzO9HqGYCKE.mov"
                     type="video/mp4"
                   />
                 </video>
