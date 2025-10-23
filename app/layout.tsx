@@ -21,7 +21,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Future Sports Lab",
-  description: "Supersport: a new form of competition",
+  description: "Hyper Sport: a new form of competition",
   generator: "v0.app",
 }
 

@@ -37,6 +37,12 @@ export function InvitationSection() {
             className="w-full max-w-md h-auto mx-auto"
           />
         </div>
+
+        <div className="pt-8">
+          <p className="text-sm text-white/40" style={{ fontFamily: "var(--font-inter)" }}>
+            © {new Date().getFullYear()} Future Sports Lab. All rights reserved.
+          </p>
+        </div>
       </div>
     </section>
   )
